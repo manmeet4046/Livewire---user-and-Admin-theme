@@ -6,10 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    const ROLE_ADMIN = 'admin';
+    const ROLE_USER = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'role',
     ];
 
     /**
@@ -43,4 +49,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAvatarUrlAttribute(){
+        if($this->avatar){
+         return  Storage::disk('avatars')->url($this->avatar);
+        }
+
+        return asset('no-image.png');
+    }
+
+    public function isAdmin()
+    {
+        if($this->role!= self::ROLE_ADMIN){
+            return false;
+        }
+        return true;
+    }
 }

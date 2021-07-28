@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Starter</title>
+  <title>{{ setting('site_title') }} | Starter</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,6 +17,142 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+ <style>/*!
+    * Load Awesome v1.1.0 (http://github.danielcardoso.net/load-awesome/)
+    * Copyright 2015 Daniel Cardoso <@DanielCardoso>
+    * Licensed under MIT
+    */
+   .la-ball-clip-rotate,
+   .la-ball-clip-rotate > div {
+       position: relative;
+       -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+               box-sizing: border-box;
+   }
+   .la-ball-clip-rotate {
+       display: block;
+       font-size: 0;
+       color: #fff;
+   }
+   .la-ball-clip-rotate.la-dark {
+       color: #333;
+   }
+   .la-ball-clip-rotate > div {
+       display: inline-block;
+       float: none;
+       background-color: currentColor;
+       border: 0 solid currentColor;
+   }
+   .la-ball-clip-rotate {
+       width: 32px;
+       height: 32px;
+   }
+   .la-ball-clip-rotate > div {
+       width: 32px;
+       height: 32px;
+       background: transparent;
+       border-width: 2px;
+       border-bottom-color: transparent;
+       border-radius: 100%;
+       -webkit-animation: ball-clip-rotate .75s linear infinite;
+          -moz-animation: ball-clip-rotate .75s linear infinite;
+            -o-animation: ball-clip-rotate .75s linear infinite;
+               animation: ball-clip-rotate .75s linear infinite;
+   }
+   .la-ball-clip-rotate.la-sm {
+       width: 16px;
+       height: 16px;
+   }
+   .la-ball-clip-rotate.la-sm > div {
+       width: 16px;
+       height: 16px;
+       border-width: 1px;
+   }
+   .la-ball-clip-rotate.la-2x {
+       width: 64px;
+       height: 64px;
+   }
+   .la-ball-clip-rotate.la-2x > div {
+       width: 64px;
+       height: 64px;
+       border-width: 4px;
+   }
+   .la-ball-clip-rotate.la-3x {
+       width: 96px;
+       height: 96px;
+   }
+   .la-ball-clip-rotate.la-3x > div {
+       width: 96px;
+       height: 96px;
+       border-width: 6px;
+   }
+   /*
+    * Animation
+    */
+   @-webkit-keyframes ball-clip-rotate {
+       0% {
+           -webkit-transform: rotate(0deg);
+                   transform: rotate(0deg);
+       }
+       50% {
+           -webkit-transform: rotate(180deg);
+                   transform: rotate(180deg);
+       }
+       100% {
+           -webkit-transform: rotate(360deg);
+                   transform: rotate(360deg);
+       }
+   }
+   @-moz-keyframes ball-clip-rotate {
+       0% {
+           -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
+       }
+       50% {
+           -moz-transform: rotate(180deg);
+                transform: rotate(180deg);
+       }
+       100% {
+           -moz-transform: rotate(360deg);
+                transform: rotate(360deg);
+       }
+   }
+   @-o-keyframes ball-clip-rotate {
+       0% {
+           -o-transform: rotate(0deg);
+              transform: rotate(0deg);
+       }
+       50% {
+           -o-transform: rotate(180deg);
+              transform: rotate(180deg);
+       }
+       100% {
+           -o-transform: rotate(360deg);
+              transform: rotate(360deg);
+       }
+   }
+   @keyframes ball-clip-rotate {
+       0% {
+           -webkit-transform: rotate(0deg);
+              -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                   transform: rotate(0deg);
+       }
+       50% {
+           -webkit-transform: rotate(180deg);
+              -moz-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                   transform: rotate(180deg);
+       }
+       100% {
+           -webkit-transform: rotate(360deg);
+              -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                   transform: rotate(360deg);
+       }
+   }</style>
+ 
   <livewire:styles /></head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -197,7 +333,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
         <li class="nav-item">
-                <a href="#" class="nav-link {{ (request()->is('admin/users'))?'active':'' }}">
+                <a href="{{ route('admin.users') }}" class="nav-link {{ (request()->is('admin/users'))?'active':'' }}">
                   <i class="nav-icon fas fa-users"></i>
                   <p>
                     Users
@@ -207,8 +343,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ route('admin.appointments') }}" class="nav-link {{ (request()->is('admin/appointments'))?'active':'' }}">
+              <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Appointments
                 
@@ -217,8 +353,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
         
          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ route('admin.settings') }}" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
               <p>
                 Settings
                 
@@ -226,13 +362,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <form method="post" action="{{ route('logout') }}">
+                @csrf
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit()" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Logout
                 
               </p>
             </a>
+              </form>
           </li>
         </ul>
       </nav>
@@ -279,6 +418,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/dist/js/adminlte.min.js')}}"></script>
 <script src="{{ asset('backend/plugins/toastr/toastr.min.js')}}"></script>
+<script src="http://unpkg.com/moment"></script>
+<script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+
 <script>
 
     $(document).ready(function() {
@@ -313,7 +455,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         toastr.success(event.detail.message, 'Success');
        
     });
+    window.addEventListener('show-feedback-modal', event=>{
+        $('#feedback').modal('show');
+        //toastr.success(event.detail.message, 'Success');
+       
+    });
 </script>
+
+@stack('js')
 <livewire:scripts />
 </body>
 </html>

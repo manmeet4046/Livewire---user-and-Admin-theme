@@ -5,14 +5,25 @@ namespace App\Http\Livewire\Admin\Users;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use App\Models\User;
-
+use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 class ListUsers extends Component
 {
+    use WithPagination;
+    use WithFileUploads;
+    protected $paginationTheme = 'bootstrap';
     /* public $name, $email, $password, $passwordConfirm; */
     public $state = [];
     public $showEdit = false;
     public $user=null;
     public $userIdBeingRemoved;
+    public $searchTerm = null;
+    public $photo;
+
+    public function changeRole(User $user, $role){
+
+        $user->update(['role'=>$role]);
+    }
     public function addUser()
     {
         $this->state = [];
@@ -29,6 +40,9 @@ class ListUsers extends Component
         ])->validate();
 
         $validatedData['password'] = bcrypt($validatedData['password']);
+        if($this->photo){
+            $validatedData['avatar'] = $this->photo->store('/', 'avatars');  
+        }
         User::create($validatedData);
        session()->flash('message','User Added Successfully');
         $this->dispatchBrowserEvent('hide-userform',['message'=>'User Added Successfully']);
@@ -73,7 +87,11 @@ class ListUsers extends Component
    }
     public function render()
     {
-        $users = User::latest()->paginate();
+       $users = User::query()
+            ->where('name','like', '%'.$this->searchTerm.'%')
+            ->orWhere('email','like', '%'.$this->searchTerm.'%')
+            ->latest()->paginate(5);
+       // $users = User::latest()->paginate(5);
         return view('livewire.admin.users.list-users', compact('users'))->layout('layouts.admin');
     }
 }

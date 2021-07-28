@@ -1,54 +1,38 @@
 <div>
     <div>
-<style>.carousel-item {
-    height: 50vh;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }</style>
+
         <!--MAIN SLIDE-->
-        <div  class="wrap-main-slide">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                  <!-- Slide One - Set the background image for this slide in the line below -->
-                  <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h2 class="display-4">First Slide</h2>
-                      <p class="lead">This is a description for the first slide.</p>
+        <div class="wrap-main-slide">
+            <div class="slide-carousel owl-carousel style-nav-1" data-items="1" data-loop="1" data-nav="true" data-dots="false">
+                <div class="item-slide">
+                    <img src="{{ asset('assets/images/main-slider-1-1.jpg') }}" alt="" class="img-slide">
+                    <div class="slide-info slide-1">
+                        <h2 class="f-title">Kid Smart <b>Watches</b></h2>
+                        <span class="subtitle">Compra todos tus productos Smart por internet.</span>
+                        <p class="sale-info">Only price: <span class="price">$59.99</span></p>
+                        <a href="#" class="btn-link">Shop Now</a>
                     </div>
-                  </div>
-                  <!-- Slide Two - Set the background image for this slide in the line below -->
-                  <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h2 class="display-4">Second Slide</h2>
-                      <p class="lead">This is a description for the second slide.</p>
-                    </div>
-                  </div>
-                  <!-- Slide Three - Set the background image for this slide in the line below -->
-                  <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h2 class="display-4">Third Slide</h2>
-                      <p class="lead">This is a description for the third slide.</p>
-                    </div>
-                  </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-              </div>
+                <div class="item-slide">
+                    <img src="{{ asset('assets/images/main-slider-1-2.jpg') }}" alt="" class="img-slide">
+                    <div class="slide-info slide-2">
+                        <h2 class="f-title">Extra 25% Off</h2>
+                        <span class="f-subtitle">On online payments</span>
+                        <p class="discount-code">Use Code: #FA6868</p>
+                        <h4 class="s-title">Get Free</h4>
+                        <p class="s-subtitle">TRansparent Bra Straps</p>
+                    </div>
+                </div>
+                <div class="item-slide">
+                    <img src="{{ asset('assets/images/main-slider-1-3.jpg') }}" alt="" class="img-slide">
+                    <div class="slide-info slide-3">
+                        <h2 class="f-title">Great Range of <b>Exclusive Furniture Packages</b></h2>
+                        <span class="f-subtitle">Exclusive Furniture Packages to Suit every need.</span>
+                        <p class="sale-info">Stating at: <b class="price">$225.00</b></p>
+                        <a href="#" class="btn-link">Shop Now</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!--BANNER-->
@@ -169,7 +153,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Quality Conformance</h5>
                   <p class="card-text " style="font-size:14px;"> Innovative Solutions has established a Quality Management System as per ISO 9001: 2008 &ASME. The company has also obtained ASME U, S & NB R stamp accreditation. </p>
-                  <button wire:click.prevent='openConformance' class="btn btn-success btn-sm mt-1" {{-- data-toggle="modal" data-target="#conformance" --}}>
+                  <button wire:click.prevent='openOffer' class="btn btn-success btn-sm mt-1" {{    }}}}data-toggle="modal" data-target="#conformance">
                     Read More ...
                   </button>
                 </div>
@@ -180,7 +164,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Quality Policy</h5>
                   <p class="card-text" style="font-size:14px;">Understanding our customers’ precise requirements and ensuring that they are fulfilled. ...</p>
-                  <button wire:click.prevent='openPolicy' class="btn btn-danger btn-sm mt-1" {{--   data-toggle="modal" data-target="#policy"--}}>
+                  <button wire:click.prevent='openOffer' class="btn btn-danger btn-sm mt-1" data-toggle="modal" data-target="#policy">
                     Read More ...
                   </button>
                 </div>
@@ -195,54 +179,23 @@
 
 
 <!-- Modal -->
-<div  class="modal fade" id="offer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="offer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title text-danger " id="exampleModalLabel"><u>{{ ($openOffer)?'What We Offer':(($openConformance)?'Quality Conformance':'Quality Policy' )}}</u></h5>
+      <h5 class="modal-title text-danger " id="exampleModalLabel"><u>What we offer</u></h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body text-justify">
-        @if($openOffer)
+    <div class="modal-body">
         <p>Innovative solutions provides nationwide, independent services that make a difference in people’s lives. Our international experts help you operate in more efficient and sustainable ways by streamlining processes, 
             improving quality and productivity, reducing risk, verifying compliance and increasing speed to market. Our core service activities cover all industry sectors and touch the products and services that consumers around the world rely on every day.</p>
         <p>Innovative solutions has a very specialized laboratories equipped with the latest technology in the field of testing and laboratories at pampore Jammu and Kashmir.</p>
         <p>Our objectives are to support the construction industry in the Geotechnical investigation, testing technology, structure evaluation, Nondestructive testing, Material analysis, and participating in research and study projects.</p>
         <p>In order to enhance technology utilization and adaptation, Innovative solutions associates with distinguished international consulting firms to provide specialized services in testing technology.</p>
         <p>Innovative solutions participate locally and internationally in terms of technical publications, sponsoring seminars, and geotechnical agencies memberships.</p>
-       @elseif($openConformance)
-       <p>Innovative Solutions has established a Quality Management System as per ISO 9001: 2008 &amp;ASME. The company has also obtained ASME U, S &amp; NB R stamp accreditation. All the requirements are stipulated in the codes &amp; standards are embedded in the manufacturing sequence. The raw materials are procured from reputed suppliers &amp; manufacturers under Third Party Inspection agencies as per the Technical Delivery Conditions (TDC) set out by our design Department.</p>
-       <p>All the products are subject to third party inspection by reputed agencies Like Lloyds, DNV, BVIS,TUV,RITES, GL, HSB global Standards etc., at all stages of manufacturing process.</p>
-       <p>Industry standards</p>
-       <p>There are various <u>technical standards</u> available, which organizations can use to evaluate products and services. <u>Test methods</u> are published by regulators or can be included in <u>specifications</u> or <u>contracts</u>. International standards organizations also publish test methods:</p>
-       <ul>
-       <li><u>International Organization for Standardization</u>, ISO</li>
-       <li><u>ASTM International</u></li>
-       <li><u>European Committee for Standardization</u>. CEN</li>
-       <li>Military Standards</li>
-       <li>ASME</li>
-       <li>API</li>
-       <li>BS</li>
-       <li>DN</li>
-       <li>etc.</li>
-       </ul>
-       @else
-       <p>Understanding our customers&#8217; precise requirements and ensuring that they are fulfilled.</p>
-       <ul>
-       <li>Manage our company with utmost professionalism.</li>
-       <li>Update our services with latest technologies.</li>
-       <li>Maintain the highest degree of professional and personal ethics.</li>
-       <li>Offer competitive rates and true value for money to our clients.</li>
-       <li>We will deliver defect-free products, services and solutions to meet the requirements of internal and external customers, on time, every time.</li>
-       <li>Improve skills of work force through professional training</li>
-       <li>Constant up gradation to Technologies, Manufacturing methods and Engineering practices to attain excellence.</li>
-       <li>Educate the workmen in Safe Handling of the tools and materials</li>
-       <li> Ensure optimum utilization of valuable resources.</li>
-       </ul>  
-       @endif
-
+        
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -253,10 +206,72 @@
 </div>
 
 
-
+<!-- Modal2 -->
+<div class="modal fade" id="conformance" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-danger " id="exampleModalLabel"><u>Quality Conformance</u></h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body ">
+        <p>Innovative Solutions has established a Quality Management System as per ISO 9001: 2008 &amp;ASME. The company has also obtained ASME U, S &amp; NB R stamp accreditation. All the requirements are stipulated in the codes &amp; standards are embedded in the manufacturing sequence. The raw materials are procured from reputed suppliers &amp; manufacturers under Third Party Inspection agencies as per the Technical Delivery Conditions (TDC) set out by our design Department.</p>
+        <p>All the products are subject to third party inspection by reputed agencies Like Lloyds, DNV, BVIS,TUV,RITES, GL, HSB global Standards etc., at all stages of manufacturing process.</p>
+        <p>Industry standards</p>
+        <p>There are various <u>technical standards</u> available, which organizations can use to evaluate products and services. <u>Test methods</u> are published by regulators or can be included in <u>specifications</u> or <u>contracts</u>. International standards organizations also publish test methods:</p>
+        <ul>
+        <li><u>International Organization for Standardization</u>, ISO</li>
+        <li><u>ASTM International</u></li>
+        <li><u>European Committee for Standardization</u>. CEN</li>
+        <li>Military Standards</li>
+        <li>ASME</li>
+        <li>API</li>
+        <li>BS</li>
+        <li>DN</li>
+        <li>etc.</li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      
+    </div>
+  </div>
+</div>
+</div>
 
 <!-- Modal3 -->
-
+<div class="modal fade" id="policy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-danger " id="exampleModalLabel"><u>Quality Policy</u></h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p>Understanding our customers&#8217; precise requirements and ensuring that they are fulfilled.</p>
+<ul>
+<li>Manage our company with utmost professionalism.</li>
+<li>Update our services with latest technologies.</li>
+<li>Maintain the highest degree of professional and personal ethics.</li>
+<li>Offer competitive rates and true value for money to our clients.</li>
+<li>We will deliver defect-free products, services and solutions to meet the requirements of internal and external customers, on time, every time.</li>
+<li>Improve skills of work force through professional training</li>
+<li>Constant up gradation to Technologies, Manufacturing methods and Engineering practices to attain excellence.</li>
+<li>Educate the workmen in Safe Handling of the tools and materials</li>
+<li> Ensure optimum utilization of valuable resources.</li>
+</ul>  
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      
+    </div>
+  </div>
+</div>
+</div>
 
 
 </div>

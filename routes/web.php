@@ -2,9 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Livewire\Users\HomePage;
-use App\Http\Livewire\Admin\Users\ListUsers;
+
+
+use Illuminate\Support\Facades\Artisan;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
 Route::get('users/home', HomePage::class)->name('users.home');
-Route::get('admin/users', ListUsers::class)->name('admin.users');
+//Route::get('feedback', ListFeedback::class)->name('feeback');
+   // Route::get('feedback/create', CreateFeedbackForm::class)->name('feedback.create');
+
+Route::get('/symlink', function () {
+    Artisan::call('storage:link');
+});
